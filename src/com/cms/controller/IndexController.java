@@ -15,7 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cms.dto.TreeDto;
+import com.cms.model.Article;
 import com.cms.model.Channel;
+import com.cms.model.Page;
+import com.cms.service.ArticleService;
 import com.cms.service.ChannelService;
 
 @Controller
@@ -24,6 +27,9 @@ public class IndexController {
 	
 	@Autowired
 	private ChannelService channelService;
+	
+	@Autowired
+	private ArticleService articleService;
 	
 	
 	@RequestMapping("/index")
@@ -45,7 +51,20 @@ public class IndexController {
 		model.addAttribute("carousels", imgs);
 		
 		// 文章
+		int pageNo = 1;
+		int pageSize = 5;
+
+//		try {
+//			pageNo = Integer.parseInt("1");
+//		} catch (Exception e) {
+//			pageNo = 1;
+//		}
+
+		Page<Article> pageArticle = new Page<Article>(pageNo, pageSize);
 		
+		pageArticle.setList(articleService.listPageArticle(pageArticle));
+		pageArticle.setTotalNum(articleService.totalNum());
+		model.addAttribute("pageArticle", pageArticle);
 		
 		
 		

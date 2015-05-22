@@ -19,6 +19,15 @@ public class Article {
 	private String createDate;
 	private String publishDate;
 	private String channel;
+	private String channelName;
+	public String getChannelName() {
+		return channelName;
+	}
+
+	public void setChannelName(String channelName) {
+		this.channelName = channelName;
+	}
+
 	private String author;
 	private String thumb;
 	private String asn;

@@ -123,7 +123,16 @@ public class ArticleController {
 
 		Page<Article> pageArticle = new Page<Article>(pageNo, pageSize);
 		
-		pageArticle.setList(articleService.listPageArticle(pageArticle));
+		List<Article> listPageArticle = articleService.listPageArticle(pageArticle);
+		for (int i = 0; i < listPageArticle.size(); i++) {
+			Article article = listPageArticle.get(i);			
+			String channelSn = article.getChannel();
+			Channel channel = channelService.findChannelBySn(channelSn);
+			article.setChannelName(channel.getName());		
+		}
+		
+		
+		pageArticle.setList(listPageArticle);
 		pageArticle.setTotalNum(articleService.totalNum());
 		model.addAttribute("pageArticle", pageArticle);
 		

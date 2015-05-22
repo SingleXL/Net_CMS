@@ -98,7 +98,7 @@
 		<div class="col-sm-8">
 			<div class="panel panel-default">
   				<div class="panel-body">
-   					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+   					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="display:none">
 					
 					    <!-- Wrapper for slides -->
 					    <div class="carousel-inner" role="listbox">
@@ -138,28 +138,35 @@
   				</div>
 			</div>
 			
-			<div class="panel panel-default">
-  				<div class="panel-heading">
-  					<span class="category">文章类别</span>
-  					<span class="title"><a href="http://www.baidu.com" target="_blank">文章标题</a></span>
-  				</div>
-  				<div class="panel-body">
-   					<div class="row">
-   						<div class="col-sm-2 visible-lg">
-   							<img src="<%=basePath %>/resources/imgs/default_thumb.jpg">
-   						</div>
-   						<div class="col-sm-10" style="padding-left: 30px;font-size: 14px;color:#3E3E3E;" >
-   							<div style="height: 60px; word-break:break-all;word-wrap:break-word;overflow: hidden;">
-   							刚刚过去的是清明节，三天的假期，同学刚刚过去的是清明节，三天的假期，同学刚刚过去的是清明节，三天的假期，同学刚刚过去的是清明节，三天的假期，同学刚刚过去的是清明节，三天的假期，同学们都在朋友圈里各种晒出门旅行的照片，http://www.wojilu.com/Forum1/Topic/4287所以也就呆在宿舍里面整整宅了三天。不过也没闲着，因为实在太无聊，
-   								所以在网上下载了各种技术教学视频，蹲在宿舍里面……
-   							</div>
-   							<div class="visible-lg" style="margin-top: 8px;"> 2015年04月07日  3 条评论  107 PHP / ThinkPHP</div>
-   						</div>
-   					</div>
-  				</div>
-			</div>
-			
 
+			<c:forEach items="${pageArticle.list }" var="article">
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span class="category">${article.channelName }</span>
+						<span class="title"><a href="http://www.baidu.com" target="_blank">${article.title }</a></span>
+					</div>
+					<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-2 visible-lg">
+									<img src="${article.thumb }">
+								</div>
+								<div class="col-sm-10" style="padding-left: 30px;font-size: 14px;color:#3E3E3E;" >
+									<div style="height: 60px; word-break:break-all;word-wrap:break-word;overflow: hidden;">${article.summary }
+									</div>
+									<div class="visible-lg" style="margin-top: 8px;"> ${article.createDate }</div>
+								</div>
+							</div>
+					</div>
+				</div>
+			
+			</c:forEach>
+			
+			
+			
+			
+			
+			
 			<nav>
 			    <ul class="pagination">
 			        <li>
@@ -177,6 +184,8 @@
 			        </li>
 			    </ul>
 			</nav>
+			
+			
 		</div>
 		
 		
