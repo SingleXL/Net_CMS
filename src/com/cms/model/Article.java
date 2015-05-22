@@ -1,13 +1,15 @@
 package com.cms.model;
 
 public class Article {
+	
 	@Override
 	public String toString() {
 		return "Article [articleId=" + articleId + ", title=" + title
 				+ ", keyword=" + keyword + ", status=" + status + ", content="
 				+ content + ", summary=" + summary + ", createDate="
 				+ createDate + ", publishDate=" + publishDate + ", channel="
-				+ channel + ", author=" + author + ", thumb=" + thumb + "]";
+				+ channel + ", channelName=" + channelName + ", author="
+				+ author + ", thumb=" + thumb + ", asn=" + asn + "]";
 	}
 
 	private Integer articleId;

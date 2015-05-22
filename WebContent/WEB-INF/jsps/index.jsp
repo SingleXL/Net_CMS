@@ -140,8 +140,7 @@
 			
 
 			<c:forEach items="${pageArticle.list }" var="article">
-			
-				<div class="panel panel-default">
+				<div class="panel panel-default listArticle" >
 					<div class="panel-heading">
 						<span class="category">${article.channelName }</span>
 						<span class="title"><a href="http://www.baidu.com" target="_blank">${article.title }</a></span>
@@ -154,39 +153,34 @@
 								<div class="col-sm-10" style="padding-left: 30px;font-size: 14px;color:#3E3E3E;" >
 									<div style="height: 60px; word-break:break-all;word-wrap:break-word;overflow: hidden;">${article.summary }
 									</div>
-									<div class="visible-lg" style="margin-top: 8px;"> ${article.createDate }</div>
+									<div class="visible-lg" style="margin-top: 8px;">&nbsp;发布时间 &nbsp;${article.createDate }</div>
 								</div>
 							</div>
 					</div>
 				</div>
-			
 			</c:forEach>
 			
-			
-			
-			
-			
-			
-			<nav>
-			    <ul class="pagination">
-			        <li>
-			            <a href="#" aria-label="Previous">
-			                <span aria-hidden="true">&laquo;</span>
-			            </a>
-			        </li>
-			        <li><a href="#">3</a></li>
-			        <li><a href="#">4</a></li>
-			        <li><a href="#">5</a></li>
-			        <li>
-			            <a href="#" aria-label="Next">
-			                <span aria-hidden="true">&raquo;</span>
-			            </a>
-			        </li>
-			    </ul>
-			</nav>
-			
+			<a class="previous" href="<%=basePath %>/admin/article/listAllArticles?pageNoStr=${pageArticle.pageNo-1}">上一页</a> 
+		    &nbsp;
+		    <a class="next" href="<%=basePath %>/admin/article/listAllArticles?pageNoStr=${pageArticle.pageNo+1}">下一页</a> 
+		    &nbsp;
+		          当前第<span class="currentNo">${pageArticle.pageNo }</span>页
+		    &nbsp;
+		         共<span class="totalPageNum">${pageArticle.totalPageNum }</span>页
 			
 		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		<!--右侧 -->
@@ -209,7 +203,11 @@
     				<h3 class="panel-title"><span class="glyphicon glyphicon glyphicon-list" style="margin-right: 2px;"></span>&nbsp;<b>最新文章</b></h3>
   				</div>
   				<div class="panel-body">
-   				Panel content
+  					<div class="list-group">
+					  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+					  <a href="#" class="list-group-item">Morbi leo risus</a>
+					  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+					</div>
   				</div>
 			</div>
 			
@@ -218,7 +216,11 @@
     				<h3 class="panel-title"><span class="glyphicon glyphicon glyphicon-list" style="margin-right: 2px;"></span>&nbsp;<b>随机文章</b></h3>
   				</div>
   				<div class="panel-body">
-   				Panel content
+   					<div class="list-group">
+					  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+					  <a href="#" class="list-group-item">Morbi leo risus</a>
+					  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+					</div>
   				</div>
 			</div>
 			
@@ -236,6 +238,7 @@
    					&nbsp;&nbsp;<a href="http://www.edu.cn" target="_blank">中国科研网</a>
    					&nbsp;&nbsp;<a href="http://www.baidu.com" target="_blank">百度</a>
    					&nbsp;&nbsp;<a href="http://www.qq.com" target="_blank">腾讯</a>
+  					<mbr>
   				</div>
 			</div>
 		</div>

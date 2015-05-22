@@ -47,5 +47,14 @@
 	</delete>
 	
 	
+	<select id="randomArticles" resultMap="articleMap">
+		SELECT * FROM articles ORDER BY RAND() LIMIT 3
+	</select>
+	
+	<select id="lastArticles" resultMap="articleMap">
+		select * from articles order by createDate desc limit 3
+	</select>
+	
+	
 
 </mapper>

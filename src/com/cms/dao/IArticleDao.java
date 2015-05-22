@@ -10,13 +10,14 @@ public interface IArticleDao {
 	// 模糊查询
 //	public List<Article> findByChannelAndTitle(String channelSn,String title);
 	
+	
 	public Article findArticleById(Integer articleId);
 	public void addArticle(Article article);
 	public List<Article> listPageArticle(Page<Article> pageArticle);
 	public Integer totalNum();
 	public void editArticle(Article article);
 	public void deleteArticle(Integer articleId);
-	
-	
+	public List<Article> randomArticles();	
+	public List<Article> lastArticles();
 	
 }
