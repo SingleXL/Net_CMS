@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.IArticleDao">
+	<resultMap type="com.cms.model.Article" id="articleMap">
+		<result property="articleId" column="articleId" />
+		<result property="title" column="title" />
+		<result property="keyword" column="keyword" />
+		<result property="status" column="status" />
+		<result property="content" column="content" />
+		<result property="summary" column="summary" />
+		<result property="createDate" column="createDate" />
+		<result property="publishDate" column="publishDate" />
+		<result property="channel" column="channel" />
+		<result property="author" column="author" />
+		<result property="thumb" column="thumb" />
+		<result property="asn" column="asn" />
+	</resultMap>
+
+	<select id="findArticleById" parameterType="integer" resultMap="articleMap">
+		select * from articles where articleId = #{articleId}
+	</select>
+
+	<insert id="addArticle" parameterType="com.cms.model.Article">
+		insert into
+		articles(title,keyword,status,content,summary,createDate,publishDate,channel,author,thumb,asn)
+		values(#{title},#{keyword},#{status},#{content},#{summary},#{createDate},#{publishDate},#{channel},#{author},#{thumb},#{asn})
+	</insert>
+
+	<select id="totalNum" resultType="integer">
+		select count(*) from articles
+	</select>
+
+	<select id="listPageArticle" parameterType="com.cms.model.Page"
+		resultMap="articleMap">
+		select * from articles order by createDate desc limit #{offset},#{pageSize}
+	</select>
+	
+	<update id="editArticle" parameterType="com.cms.model.Article">
+	    update articles
+	    set title=#{title},status=#{status},content=#{content},summary=#{summary},channel=#{channel} where articleId = #{articleId}
+	</update>
+	
+	<delete id="deleteArticle" parameterType="integer">
+		delete from articles where articleId = #{articleId}
+	</delete>
+	
+	
+
+</mapper>

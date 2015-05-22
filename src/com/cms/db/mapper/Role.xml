@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.IRoleDao">
+
+	<resultMap type="com.cms.model.Role" id="roleMap">
+		<id property="roleId" column="roleId" />
+		<result property="roleName" column="roleName" />
+		<result property="roleValue" column="roleValue" />
+		<result property="roleDesc" column="roleDesc" />
+	</resultMap>
+
+	<resultMap type="com.cms.model.Role" id="roleRightMap"
+		extends="roleMap">
+		<collection property="rights" ofType="com.cms.model.Right">
+			<id property="rightId" column="rightId" />
+			<result property="rightName" column="rightName" />
+			<result property="rightUrl" column="rightUrl" />
+			<result property="rightPos" column="rightPos" />
+			<result property="rightCode" column="rightCode" />
+		</collection>
+	</resultMap>
+
+	<select id="listAllRoles" resultMap="roleMap">
+		select * from roles
+	</select>
+	
+	<select id="findRoleRight" parameterType="integer" resultMap="roleRightMap">
+		select role.roleId,role.roleName,role.roleValue,role.roleDesc,right1.rightId,right1.rightName,right1.rightUrl,right1.rightPos,right1.rightCode
+		from roles role 
+		left join role_right rr on role.roleId = rr.roleId
+		left join rights right1 on right1.rightId = rr.rightId where role.roleId = #{roleId}	
+	</select>
+	
+
+	<select id="findRoleById" parameterType="integer" resultMap="roleMap">
+		select * from roles where roleId = #{roleId}
+	</select>
+
+	<update id="upRole" parameterType="com.cms.model.Role">
+		update roles set roleName = #{roleName},roleDesc = #{roleDesc} where roleId
+		= #{roleId}
+	</update>
+
+	<insert id="addRole" parameterType="com.cms.model.Role">
+		insert into roles(roleName,roleDesc) values(#{roleName},#{roleDesc})
+	</insert>
+	
+	<insert id="addRoleRight" parameterType="com.cms.model.RoleRight">
+		insert into role_right(roleId,rightId) values(#{role.roleId},#{right.rightId})
+	</insert>
+	
+	<delete id="deleteRoleRight" parameterType="integer">
+		delete from role_right where roleId = #{roleId};
+	</delete>
+
+	<delete id="deleteRole" parameterType="integer">
+		delete from roles where roleId = #{roleId};
+	</delete>
+
+
+
+
+</mapper>

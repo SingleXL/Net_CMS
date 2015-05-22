@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.IChannelDao">
+	<resultMap type="com.cms.model.Channel" id="channelMap">
+		<result property="channelId" column="channelId" />
+		<result property="name" column="name" />
+		<result property="sn" column="sn"/>
+		<result property="url" column="url"/>
+		<result property="sort" column="sort" />
+		<result property="status" column="stauts" />
+		<result property="pchannelId" column="pchannelId"/>
+	</resultMap>
+	
+	<select id="listAllChannels" resultMap="channelMap">
+	    select * from channels
+	</select>
+	
+	<select id="findChannelById" parameterType="integer" resultMap="channelMap">
+	    select * from channels where channelId = #{channelId}
+	</select>
+	
+	<select id="findChannelBySn" parameterType="string" resultMap="channelMap">
+	    select * from channels where sn = #{sn}
+	</select>
+	
+	<insert id="addChannel" parameterType="com.cms.model.Channel">
+	    insert into channels(name,url,sort,status,pchannelId,sn) values(#{name},#{url},#{sort},#{status},#{pchannelId},#{sn})
+	</insert>
+	
+	<update id="editChannel" parameterType="com.cms.model.Channel">
+	    update channels
+	    set name=#{name},url=#{url},sort=#{sort},status=#{status},sn=#{sn} where channelId = #{channelId}
+	</update>
+	
+	
+	<update id="stopChilds" parameterType="integer">
+	    update channels
+	    set status = 0 where pchannelId = #{pid}
+	</update>
+	
+	<delete id="deleteChannel" parameterType="string">
+		delete from channels where sn = #{sn}
+	</delete>
+	
+	<delete id="deleteChildChannel" parameterType="integer">
+		delete from channels where pchannelId = #{channelId}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

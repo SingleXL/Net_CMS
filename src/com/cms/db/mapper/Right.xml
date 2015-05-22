@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.IRightDao">
+
+	<resultMap type="com.cms.model.Right" id="rightMap">
+		<id property="rightId" column="rightId" />
+		<result property="rightName" column="rightName"/>
+		<result property="rightUrl" column="rightUrl"/>
+		<result property="rightPos" column="rightPos"/>
+		<result property="category" column="category"/>
+		<result property="rightCode" column="rightCode"/>
+	</resultMap>
+
+	<select id="findAllRights" resultMap="rightMap">
+		select * from rights
+	</select>
+	
+	<select id="findTopRight" resultMap="rightMap">
+		select * from rights order by rightPos desc, rightCode desc
+	</select>
+	
+	<select id="findRightByUrl" parameterType="com.cms.model.Right" resultMap="rightMap">
+		select * from rights where rightUrl = #{rightUrl}
+	</select>
+	
+	<select id="getMaxRightPos" resultType="integer">
+		select max(rightPos) from rights
+	</select>
+	
+	<insert id="addRight" parameterType="com.cms.model.Right">
+		insert into rights (rightName,rightUrl,rightPos,rightCode,category) values(#{rightName},#{rightUrl},#{rightPos},#{rightCode},#{category})
+	</insert>
+
+</mapper>

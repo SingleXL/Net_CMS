@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.IAttachDao">
+	<resultMap type="com.cms.model.Attach" id="attachMap">
+		<result property="asn" column="asn" />
+		<result property="newName" column="newName"/>
+		<result property="oldName" column="oldName"/>
+		<result property="sn" column="sn"/>
+		<result property="type" column="type"/>
+		<result property="isImg" column="isImg"/>
+	</resultMap>
+	
+	<select id="findAttachBySn" parameterType="string" resultMap="attachMap">
+	    select * from attachs where sn = #{sn}	    
+	</select>
+	
+	<insert id="addAttach" parameterType="com.cms.model.Attach">
+		insert into attachs(newName,oldName,sn,type,isImg)	    
+			values(#{newName},#{oldName},#{sn},#{type},#{isImg})
+	</insert>
+	
+	<update id="upAttach" parameterType="com.cms.model.Attach">
+		update attachs set asn = #{asn} where sn = #{sn}
+	</update>
+	
+</mapper>
