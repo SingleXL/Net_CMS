@@ -143,7 +143,7 @@
 				<div class="panel panel-default listArticle" >
 					<div class="panel-heading">
 						<span class="category">${article.channelName }</span>
-						<span class="title"><a href="<%=basePath %>/admin/article/showArticle/${article.articleId }" target="_blank">${article.title }</a></span>
+						<span class="title"><a href="http://www.baidu.com" target="_blank">${article.title }</a></span>
 					</div>
 					<div class="panel-body">
 							<div class="row">
@@ -259,11 +259,8 @@
 </body>
 
 <script type="text/javascript">
-	$(function() {
-		//轮播图片
-		var item = $(".item").get(0)
-		$(item).addClass("active");
-	});
+
+
 </script>
 
 </html>

@@ -10,11 +10,11 @@ import com.cms.model.Article;
 import com.cms.model.Page;
 
 @Service
-public class ArticleService{
+public class ArticleService {
 
 	@Autowired
 	private IArticleDao iArticleDao;
-	
+
 	public Article findArticleById(Integer articleId) {
 		return iArticleDao.findArticleById(articleId);
 	}
@@ -22,8 +22,7 @@ public class ArticleService{
 	public void addArticle(Article article) {
 		iArticleDao.addArticle(article);
 	}
-	
-	
+
 	public void editArticle(Article article) {
 		iArticleDao.editArticle(article);
 	}
@@ -37,9 +36,15 @@ public class ArticleService{
 	}
 
 	public void deleteArticle(Integer articleId) {
-		iArticleDao.deleteArticle(articleId);		
+		iArticleDao.deleteArticle(articleId);
 	}
-	
-	
-	
+
+	public List<Article> randomArticles() {
+		return iArticleDao.randomArticles();
+	}
+
+	public List<Article> lastArticles() {
+		return iArticleDao.lastArticles();
+	}
+
 }

@@ -77,8 +77,12 @@ public class IndexController {
 		model.addAttribute("pageArticle", pageArticle);
 		
 		// 最新文章
+		List<Article> lastArticles = articleService.lastArticles();
+		model.addAttribute("lastArticles", lastArticles);
 		
 		// 随机文章
+		List<Article> ranArticles = articleService.randomArticles();
+		model.addAttribute("ranArticles", ranArticles);
 		
 		
 		return "index";

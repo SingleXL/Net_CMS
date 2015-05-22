@@ -1,12 +1,17 @@
 package com.cms.controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -186,6 +191,28 @@ public class ArticleController {
 		
 		return "article/listAllArticles";
 	}
+	
+	
+	// 显示单独的页面   公共方法
+	@RequestMapping("/showArticle/{aid}")
+	public String showArticle(@PathVariable("aid") Integer aid,Model model){
+		System.out.println(111);
+		
+		// 频道
+		List<TreeDto<Channel>> channelTrees = channelService.listAllChannels();
+		model.addAttribute("channelTrees", channelTrees);
+		
+		// 最新文章
+		List<Article> lastArticles = articleService.lastArticles();
+		model.addAttribute("lastArticles", lastArticles);
+		
+		// 随机文章
+		List<Article> ranArticles = articleService.randomArticles();
+		model.addAttribute("ranArticles", ranArticles);
+		
+		return "article/showArticle";
+	}
+	
 	
 	
 	
