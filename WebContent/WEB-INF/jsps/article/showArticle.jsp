@@ -96,91 +96,16 @@
 	<div class="row">
 		<!-- 左侧 -->
 		<div class="col-sm-8">
-			<div class="panel panel-default">
-  				<div class="panel-body">
-   					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="display:none">
-					
-					    <!-- Wrapper for slides -->
-					    <div class="carousel-inner" role="listbox">
-						    
-						    <c:if test="${carousels.size() == 1}">
-								 <div class="item active" style="height: 220px;width: 705px;">
-						            <img src="${ctx}/resources/imgs/carousels/default.jpg">
-						        </div>
-							</c:if>
-							
-						    <c:if test="${carousels.size() > 1}">
-						    	<c:forEach items="${carousels}" var="carousel">
-						    		<c:choose>  
-									   <c:when test="${carousel.contains(\"default\")}">   
-									   </c:when>  
-									   <c:otherwise>
-									   		<div class="item" style="height: 220px;width: 705px;">
-									            <img src="${ctx}/resources/imgs/carousels/${carousel}">
-									        </div>									   		
-									   </c:otherwise>  
-									</c:choose>  
-						    	</c:forEach>
-							</c:if>
-						    
-					    </div>
-					
-					    <!-- Controls -->
-					    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-					        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					        <span class="sr-only">Previous</span>
-					    </a>
-					    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-					        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					        <span class="sr-only">Next</span>
-					    </a>
-					</div>
-  				</div>
+		
+			<div>${article.title }</div>
+			<div>${article.content }</div>
+			<div>
+				<c:forEach items="${attachs }" var="attach">
+					${attach.oldName}
+				</c:forEach>
 			</div>
 			
-
-			<c:forEach items="${pageArticle.list }" var="article">
-				<div class="panel panel-default listArticle" >
-					<div class="panel-heading">
-						<span class="category">${article.channelName }</span>
-						<span class="title"><a href="http://www.baidu.com" target="_blank">${article.title }</a></span>
-					</div>
-					<div class="panel-body">
-							<div class="row">
-								<div class="col-sm-2 visible-lg">
-									<img src="${article.thumb }">
-								</div>
-								<div class="col-sm-10" style="padding-left: 30px;font-size: 14px;color:#3E3E3E;" >
-									<div style="height: 60px; word-break:break-all;word-wrap:break-word;overflow: hidden;">${article.summary }
-									</div>
-									<div class="visible-lg" style="margin-top: 8px;">&nbsp;发布时间 &nbsp;${article.createDate }</div>
-								</div>
-							</div>
-					</div>
-				</div>
-			</c:forEach>
-			
-			<a class="previous" href="<%=basePath %>/admin/article/listAllArticles?pageNoStr=${pageArticle.pageNo-1}">上一页</a> 
-		    &nbsp;
-		    <a class="next" href="<%=basePath %>/admin/article/listAllArticles?pageNoStr=${pageArticle.pageNo+1}">下一页</a> 
-		    &nbsp;
-		          当前第<span class="currentNo">${pageArticle.pageNo }</span>页
-		    &nbsp;
-		         共<span class="totalPageNum">${pageArticle.totalPageNum }</span>页
-			
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		<!--右侧 -->

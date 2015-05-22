@@ -1,5 +1,7 @@
 package com.cms.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +27,9 @@ public class AttachService {
 		iAttachDao.upAttach(attach);
 	}
 
+	public List<Attach> listAttachsbyAsn(String asn){
+		return iAttachDao.listAttachsbyAsn(asn);
+	}
+	
 	
 }

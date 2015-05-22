@@ -25,4 +25,10 @@
 		update attachs set asn = #{asn} where sn = #{sn}
 	</update>
 	
+	<select id="listAttachsbyAsn" parameterType="string" resultMap="attachMap">
+	    select * from attachs where asn = #{asn}	    
+	</select>
+	
+	
+	
 </mapper>

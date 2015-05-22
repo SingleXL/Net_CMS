@@ -143,7 +143,7 @@
 				<div class="panel panel-default listArticle" >
 					<div class="panel-heading">
 						<span class="category">${article.channelName }</span>
-						<span class="title"><a href="<%=basePath %>/admin/article/showArticle/${article.articleId }" target="_blank">${article.title }</a></span>
+						<span class="title"><a href="<%=basePath %>/showArticle/${article.articleId }" target="_blank">${article.title }</a></span>
 					</div>
 					<div class="panel-body">
 							<div class="row">

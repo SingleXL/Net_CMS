@@ -12,13 +12,16 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cms.dto.TreeDto;
 import com.cms.model.Article;
+import com.cms.model.Attach;
 import com.cms.model.Channel;
 import com.cms.model.Page;
 import com.cms.service.ArticleService;
+import com.cms.service.AttachService;
 import com.cms.service.ChannelService;
 
 @Controller
@@ -30,6 +33,9 @@ public class IndexController {
 	
 	@Autowired
 	private ArticleService articleService;
+	
+	@Autowired
+	private AttachService attachService;
 	
 	
 	@RequestMapping("/index")
@@ -87,5 +93,36 @@ public class IndexController {
 		
 		return "index";
 	}
+	
+	
+	// 显示单独的页面   公共方法
+		@RequestMapping("/showArticle/{aid}")
+		public String showArticle(@PathVariable("aid") Integer aid,Model model){
+			// 频道
+			List<TreeDto<Channel>> channelTrees = channelService.listAllChannels();
+			model.addAttribute("channelTrees", channelTrees);
+			
+			// 最新文章
+			List<Article> lastArticles = articleService.lastArticles();
+			model.addAttribute("lastArticles", lastArticles);
+			
+			// 随机文章
+			List<Article> ranArticles = articleService.randomArticles();
+			model.addAttribute("ranArticles", ranArticles);
+			
+			// 文章内容
+			Article article = articleService.findArticleById(aid);
+			model.addAttribute("articel", article);
+			
+			// 文章附件
+			List<Attach> attachs = attachService.listAttachsbyAsn(article.getAsn());
+			System.out.println(attachs);
+			
+			model.addAttribute("attachs", attachs);
+			
+			return "article/showArticle";
+		}
+		
+	
 	
 }

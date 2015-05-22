@@ -193,28 +193,5 @@ public class ArticleController {
 	}
 	
 	
-	// 显示单独的页面   公共方法
-	@RequestMapping("/showArticle/{aid}")
-	public String showArticle(@PathVariable("aid") Integer aid,Model model){
-		System.out.println(111);
-		
-		// 频道
-		List<TreeDto<Channel>> channelTrees = channelService.listAllChannels();
-		model.addAttribute("channelTrees", channelTrees);
-		
-		// 最新文章
-		List<Article> lastArticles = articleService.lastArticles();
-		model.addAttribute("lastArticles", lastArticles);
-		
-		// 随机文章
-		List<Article> ranArticles = articleService.randomArticles();
-		model.addAttribute("ranArticles", ranArticles);
-		
-		return "article/showArticle";
-	}
-	
-	
-	
-	
 
 }
