@@ -25,7 +25,6 @@
 
 </head>
 <body>
-
 <div class="header">
 	<nav class="navbar navbar-inverse navbar-static-top">
 	    <div class="container">
@@ -36,7 +35,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		        </button>
-	            <a class="navbar-brand" href="#" style="width:50px; color: green;background: url('resources/imgs/nav.png');cursor: default;">
+	            <a class="navbar-brand" href="#" style="width:50px; color: green;background: url('../resources/imgs/nav.png');cursor: default;">
 	            </a>
 	        </div>
 	
@@ -44,6 +43,7 @@
 
 			    <ul class="nav navbar-nav">
 			
+			        <li><a href="<%=basePath %>">首页</a></li>
 					<c:forEach items="${channelTrees}" var="channelTree">
 <!-- 						//判断类型和是否有子类 -->
 						<li class="dropdown">
