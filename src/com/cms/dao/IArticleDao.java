@@ -14,6 +14,7 @@ public interface IArticleDao {
 	public Article findArticleById(Integer articleId);
 	public void addArticle(Article article);
 	public List<Article> listPageArticle(Page<Article> pageArticle);
+	public List<Article> listPageArticle1(Page<Article> pageArticle);
 	public Integer totalNum();
 	public void editArticle(Article article);
 	public void deleteArticle(Integer articleId);

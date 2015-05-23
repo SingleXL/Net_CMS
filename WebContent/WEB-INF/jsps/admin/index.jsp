@@ -63,7 +63,6 @@
                     <ul class="children">
                         <li><au:a href="${ctx }/admin/article/addArticle" sn="article_add"><i class="fa fa-caret-right"></i>添加文章</au:a></li>
                         <li><au:a href="${ctx }/admin/article/listAllArticles" sn="article_list"><i class="fa fa-caret-right"></i>文章列表</au:a></li>
-                        <li><au:a href="${ctx }/admin/article/publishArticle" sn="article_publish"><i class="fa fa-caret-right"></i>发布文章</au:a></li>
                     </ul>
                 </li>
              
@@ -134,7 +133,7 @@
             </div><!-- header-right -->
         </div><!-- headerbar -->
 
-        <div class="contentpanel" style="padding-left: 15px;">
+        <div class="contentpanel" style="padding-left: 15px;height: 1200px;overflow: auto;">
         	<img style="width:1400px;height:700px;margin-left: -15px;margin-top: -20px;"  src="${ctx }/resources/imgs/bgbank.jpg">
         </div>
 

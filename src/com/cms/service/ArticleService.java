@@ -47,4 +47,8 @@ public class ArticleService {
 		return iArticleDao.lastArticles();
 	}
 
+	public List<Article> listPageArticle1(Page<Article> pageArticle) {
+		return iArticleDao.listPageArticle1(pageArticle);
+	}
+
 }

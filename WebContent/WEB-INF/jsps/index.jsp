@@ -98,7 +98,7 @@
 		<div class="col-sm-8">
 			<div class="panel panel-default">
   				<div class="panel-body">
-   					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="display:none">
+   					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 					
 					    <!-- Wrapper for slides -->
 					    <div class="carousel-inner" role="listbox">
@@ -160,27 +160,16 @@
 				</div>
 			</c:forEach>
 			
-			<a class="previous" href="<%=basePath %>/admin/article/listAllArticles?pageNoStr=${pageArticle.pageNo-1}">上一页</a> 
+			<a class="previous" href="<%=basePath %>/index1?pageNoStr=${pageArticle.pageNo-1}">上一页</a> 
 		    &nbsp;
-		    <a class="next" href="<%=basePath %>/admin/article/listAllArticles?pageNoStr=${pageArticle.pageNo+1}">下一页</a> 
+		    <a class="next" href="<%=basePath %>/index1?pageNoStr=${pageArticle.pageNo+1}">下一页</a> 
 		    &nbsp;
 		          当前第<span class="currentNo">${pageArticle.pageNo }</span>页
 		    &nbsp;
 		         共<span class="totalPageNum">${pageArticle.totalPageNum }</span>页
 			
+			<mbr/>
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		<!--右侧 -->
@@ -204,8 +193,8 @@
   				</div>
   				<div class="panel-body">
   					<div class="list-group">
-   				      <c:forEach items="lastArticles" var="article">
-						  <a href="#" class="list-group-item">article.title</a>
+   				      <c:forEach items="${lastArticles }" var="article1">
+						  <a href="<%=basePath %>/showArticle/${article1.articleId }" class="list-group-item" target="_blank">${article1.title }</a>
    				      </c:forEach>		
 					</div>
   				</div>
@@ -217,8 +206,8 @@
   				</div>
   				<div class="panel-body">
    					<div class="list-group">
-   				      <c:forEach items="ranArticles" var="article">
-						  <a href="#" class="list-group-item">article.title</a>
+   				      <c:forEach items="${ranArticles }" var="article2">
+						  <a href="<%=basePath %>/showArticle/${article2.articleId }" class="list-group-item" target="_blank">${article2.title }</a>
    				      </c:forEach>		
 					</div>
   				</div>
@@ -265,5 +254,7 @@
 		$(item).addClass("active");
 	});
 </script>
+
+
 
 </html>

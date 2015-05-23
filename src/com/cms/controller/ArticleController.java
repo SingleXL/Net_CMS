@@ -85,9 +85,10 @@ public class ArticleController {
 		article.setAsn(asn);
 		String attachsStr = request.getParameter("attachs");
 		
+		
 		if (StringUtils.hasLength(attachsStr)) {
 			if (attachsStr.contains("|")) {
-				String[] attachSns = attachsStr.split("|");
+				String[] attachSns = attachsStr.split("\\|");
 				for(String attachSn : attachSns){
 					Attach attach = attachService.findAttachBySn(attachSn); 
 					if (attach!=null) {
@@ -165,7 +166,6 @@ public class ArticleController {
 	// 删除文章
 	@RequestMapping(value="/delete/{articleId}")
 	public void delete(@PathVariable("articleId") Integer articleId) {
-		System.out.println(1);
 		articleService.deleteArticle(articleId);
 	}
 	
@@ -190,6 +190,7 @@ public class ArticleController {
 		model.addAttribute("pageArticle", pageArticle);
 		
 		return "article/listAllArticles";
+		
 	}
 	
 	

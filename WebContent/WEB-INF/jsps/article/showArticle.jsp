@@ -95,13 +95,19 @@
 
 	<div class="row">
 		<!-- 左侧 -->
-		<div class="col-sm-8">
+		<div class="col-sm-8" style="border: 1px solid #E7E4E6;padding-bottom: 20px;">
 		
-			<div>${article.title }</div>
-			<div>${article.content }</div>
+			<div><center><h1>${article.title }</h1></center></div>
+			<hr style="height:2x;border:none;border-top:2px groove #E7E4E6;" />
+			<div style="padding-left: 10px;">${article.content }</div>
+			<br>
 			<div>
+			<br>
+			<b>相关附件</b>
+			<br>
+			<mbr/>
 				<c:forEach items="${attachs }" var="attach">
-					${attach.oldName}
+					&nbsp;&nbsp;&nbsp;&nbsp;<a href="${ctx}/resources/upload/files/${attach.newName}">${attach.oldName}</a><br>
 				</c:forEach>
 			</div>
 			
@@ -129,8 +135,8 @@
   				</div>
   				<div class="panel-body">
   					<div class="list-group">
-   				      <c:forEach items="lastArticles" var="article">
-						  <a href="#" class="list-group-item">article.title</a>
+   				      <c:forEach items="${lastArticles }" var="article1">
+						  <a href="<%=basePath %>/showArticle/${article1.articleId }" class="list-group-item" target="_blank">${article1.title }</a>
    				      </c:forEach>		
 					</div>
   				</div>
@@ -142,8 +148,8 @@
   				</div>
   				<div class="panel-body">
    					<div class="list-group">
-   				      <c:forEach items="ranArticles" var="article">
-						  <a href="#" class="list-group-item">article.title</a>
+   				      <c:forEach items="${ranArticles }" var="article2">
+						  <a href="<%=basePath %>/showArticle/${article2.articleId }" class="list-group-item" target="_blank">${article2.title }</a>
    				      </c:forEach>		
 					</div>
   				</div>
@@ -168,6 +174,7 @@
 			</div>
 		</div>
 	</div>
+	<br>
 	
 	<div class="row" style="padding-left:10px;padding-right: 10px;">
 		<div class="panel panel-default">

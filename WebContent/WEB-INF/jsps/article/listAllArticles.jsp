@@ -100,12 +100,9 @@
 		e.stopPropagation();
 		var loadPage = $(this).attr("href");
 		$(this).closest("tr").remove();
-
-		alert(loadPage)
 		$.ajax({asyn:false,url:loadPage});
 		
 		$(".contentpanel").load('${ctx}/admin/article/listAllArticles');
-		alert(2)
 		return false
 	});
 	

@@ -37,6 +37,14 @@
 		select * from articles order by createDate desc limit #{offset},#{pageSize}
 	</select>
 	
+
+	<select id="listPageArticle1" parameterType="com.cms.model.Page"
+		resultMap="articleMap">
+		select * from articles where status = 1 order by createDate desc limit #{offset},#{pageSize}
+	</select>
+	
+	
+	
 	<update id="editArticle" parameterType="com.cms.model.Article">
 	    update articles
 	    set title=#{title},status=#{status},content=#{content},summary=#{summary},channel=#{channel} where articleId = #{articleId}
@@ -48,11 +56,11 @@
 	
 	
 	<select id="randomArticles" resultMap="articleMap">
-		SELECT * FROM articles ORDER BY RAND() LIMIT 3
+		SELECT * FROM articles where status = 1 ORDER BY RAND() LIMIT 3
 	</select>
 	
 	<select id="lastArticles" resultMap="articleMap">
-		select * from articles order by createDate desc limit 3
+		select * from articles where status = 1 order by createDate desc limit 3
 	</select>
 	
 	

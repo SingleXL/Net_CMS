@@ -24,8 +24,6 @@
 
 <div>
 <h3>栏目列表</h3>
-${sessionScope.user.hasRight("article_add") }
-${sessionScope.user.hasRight("channel_edit") }
 	<line>
     <div>
 		<c:forEach items="${rights}" var="right">

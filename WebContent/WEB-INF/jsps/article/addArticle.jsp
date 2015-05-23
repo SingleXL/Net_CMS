@@ -54,7 +54,7 @@
 <span style="display: none;" id="ctx">${pageContext.request.contextPath}</span>
 
 <h3>添加文章</h3>
-<div class="row">
+<div class="row" style="height: 1200px;">
 
 
 	<div style="max-width: 900px;padding-bottom: 80px;">
@@ -224,7 +224,7 @@
 	    <div class="form-group">
 	        <label class="col-sm-2 control-label"><b>文章内容</b></label>
 	        <div class="col-sm-10" >
-		        <sf:textarea path="content" class="form-control" rows="20" id="content" style="max-width: 800px;"/>
+		        <sf:textarea path="content" class="form-control" rows="40" id="content" style="max-width: 800px;"/>
 	        </div>
 	    </div>
 	    
