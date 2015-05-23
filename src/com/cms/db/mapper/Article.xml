@@ -43,6 +43,11 @@
 		select * from articles where status = 1 order by createDate desc limit #{offset},#{pageSize}
 	</select>
 	
+	<select id="showKindArticles" parameterType="string"
+		resultMap="articleMap">
+		select * from articles where channel = #{channel}
+	</select>
+	
 	
 	
 	<update id="editArticle" parameterType="com.cms.model.Article">

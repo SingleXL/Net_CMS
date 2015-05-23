@@ -15,6 +15,9 @@ public interface IArticleDao {
 	public void addArticle(Article article);
 	public List<Article> listPageArticle(Page<Article> pageArticle);
 	public List<Article> listPageArticle1(Page<Article> pageArticle);
+	public List<Article> showKindArticles(String kind);
+	
+	
 	public Integer totalNum();
 	public void editArticle(Article article);
 	public void deleteArticle(Integer articleId);

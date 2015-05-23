@@ -50,5 +50,11 @@ public class ArticleService {
 	public List<Article> listPageArticle1(Page<Article> pageArticle) {
 		return iArticleDao.listPageArticle1(pageArticle);
 	}
+	
+	public List<Article> showKindArticles(String kind) {
+		return iArticleDao.showKindArticles(kind);
+	}
 
+	
+	
 }

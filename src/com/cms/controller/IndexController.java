@@ -180,6 +180,36 @@ public class IndexController {
 		return "article/showArticle";
 	}
 	
+	// 显示单独的页面   公共方法
+	@RequestMapping("/showKindArticles/{kind}")
+	public String showKindArticles(@PathVariable("kind") String kind,Model model){
+		// 频道
+		List<TreeDto<Channel>> channelTrees = channelService.listAllChannels();
+		model.addAttribute("channelTrees", channelTrees);
+		
+		// 最新文章
+		List<Article> lastArticles = articleService.lastArticles();
+		model.addAttribute("lastArticles", lastArticles);
+		
+		// 随机文章
+		List<Article> ranArticles = articleService.randomArticles();
+		model.addAttribute("ranArticles", ranArticles);
+		
+		// 文章内容
+		List<Article> articles = articleService.showKindArticles(kind);
+		
+		for (int i = 0; i < articles.size(); i++) {
+			Article article = articles.get(i);			
+			String channelSn = article.getChannel();
+			Channel channel = channelService.findChannelBySn(channelSn);
+			article.setChannelName(channel.getName());		
+		}
+		model.addAttribute("articles", articles);
+		
+		
+		return "article/showKindArticles";
+	}
+	
 	
 	
 }

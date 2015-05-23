@@ -36,14 +36,15 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		        </button>
-	            <a class="navbar-brand" href="#" style="width:50px; color: green;background: url('resources/imgs/nav.png');cursor: default;">
+	            <a class="navbar-brand" href="#" style="width:50px; color: green;background: url('../resources/imgs/nav.png');cursor: default;">
 	            </a>
 	        </div>
 	
 	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 			    <ul class="nav navbar-nav">
-			
+					
+					<li><a href="<%=basePath %>">首页</a></li>
 					<c:forEach items="${channelTrees}" var="channelTree">
 <!-- 						//判断类型和是否有子类 -->
 						<li class="dropdown">
@@ -51,7 +52,7 @@
 			
 							<ul class="dropdown-menu" role="menu">
 								<c:forEach items="${channelTree.childs}" var="child">
-									<li><a href="<%=basePath %>/showKindArticles/${child.sn }">${child.name}</a></li>
+									<li><a href="#">${child.name}</a></li>
 								</c:forEach>
 							</ul>
 			
@@ -59,16 +60,6 @@
 					
 					</c:forEach>
 			
-<!-- 			        <li><a href="#">理科</a></li> -->
-<!-- 			        <li><a href="#">理科</a></li> -->
-			
-<!-- 			        <li class="dropdown"> -->
-<!-- 			            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">文科<span class="caret"></span></a> -->
-<!-- 			            <ul class="dropdown-menu" role="menu"> -->
-<!-- 			                <li><a href="#">历史</a></li> -->
-<!-- 			                <li><a href="#">生物</a></li> -->
-<!-- 			            </ul> -->
-<!-- 			        </li> -->
 			        <li><a href="http://www.baidu.com" target="_blank">百度</a></li>
 			        
 			    </ul>
@@ -96,50 +87,8 @@
 	<div class="row">
 		<!-- 左侧 -->
 		<div class="col-sm-8">
-			<div class="panel panel-default">
-  				<div class="panel-body">
-   					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-					
-					    <!-- Wrapper for slides -->
-					    <div class="carousel-inner" role="listbox">
-						    
-						    <c:if test="${carousels.size() == 1}">
-								 <div class="item active" style="height: 220px;width: 705px;">
-						            <img src="${ctx}/resources/imgs/carousels/default.jpg">
-						        </div>
-							</c:if>
-							
-						    <c:if test="${carousels.size() > 1}">
-						    	<c:forEach items="${carousels}" var="carousel">
-						    		<c:choose>  
-									   <c:when test="${carousel.contains(\"default\")}">   
-									   </c:when>  
-									   <c:otherwise>
-									   		<div class="item" style="height: 220px;width: 705px;">
-									            <img src="${ctx}/resources/imgs/carousels/${carousel}">
-									        </div>									   		
-									   </c:otherwise>  
-									</c:choose>  
-						    	</c:forEach>
-							</c:if>
-						    
-					    </div>
-					
-					    <!-- Controls -->
-					    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-					        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					        <span class="sr-only">Previous</span>
-					    </a>
-					    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-					        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					        <span class="sr-only">Next</span>
-					    </a>
-					</div>
-  				</div>
-			</div>
-			
 
-			<c:forEach items="${pageArticle.list }" var="article">
+			<c:forEach items="${articles }" var="article">
 				<div class="panel panel-default listArticle" >
 					<div class="panel-heading">
 						<span class="category">${article.channelName }</span>
@@ -160,13 +109,13 @@
 				</div>
 			</c:forEach>
 			
-			<a class="previous" href="<%=basePath %>/index1?pageNoStr=${pageArticle.pageNo-1}">上一页</a> 
+			<a class="previous" href="#">上一页</a> 
 		    &nbsp;
-		    <a class="next" href="<%=basePath %>/index1?pageNoStr=${pageArticle.pageNo+1}">下一页</a> 
+		    <a class="next" href="#">下一页</a> 
 		    &nbsp;
-		          当前第<span class="currentNo">${pageArticle.pageNo }</span>页
+		          当前第<span class="currentNo">1</span>页
 		    &nbsp;
-		         共<span class="totalPageNum">${pageArticle.totalPageNum }</span>页
+		         共<span class="totalPageNum">1</span>页
 			
 			<mbr/>
 		</div>
@@ -246,37 +195,5 @@
 
 
 </body>
-
-<script type="text/javascript">
-	$(function() {
-		//轮播图片
-		var item = $(".item").get(0)
-		$(item).addClass("active");
-	});
-</script>
-
-
-<script type="text/javascript">
-
-	var currentNO = $(".currentNo").html();
-	var totalPageNum = $(".totalPageNum").html();
-
-	$(".previous").click(function(){
-		if(currentNO ==1 ){
-			return false;
-		}
-	});
-	
-	$(".next").click(function(){
-		if(currentNO==totalPageNum){
-			return false;
-		}
-	});
-	
-	
-
-</script>
-
-
 
 </html>
